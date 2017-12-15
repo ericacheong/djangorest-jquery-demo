@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+  <head>
+  </head>
+  <body>
+    <form action="" method="post" id="article-form">
+      {% csrf_token %}
+      <table>
+        {{ form }}
+      </table>
+      <div id="results"></div>
+      <input type="submit" value="Submit" />
+    </form>
+
+  <ul id="talk">
+     {% for article in article_list %}
+        <li id='article-{{article.id}}'>
+          <strong>{{ article.title }}</strong> - <em>{{ article.create_date }}</em>
+        <p>{{ article.content }}</p>
+        <a id='delete-post-{{article.id}}'>delete me</a>
+                                                                                                          </li>
+    {% endfor %}
+   </ul>
+  <span id="next"></span>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{% static 'scripts/main.js' %}"></script>
+
+  </body>
+</html>
